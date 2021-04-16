@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {Button} from "react-bootstrap";
 import firebase from "firebase";
-import {useHistory} from "react-router-dom";
+import {useHistory, withRouter} from "react-router-dom";
 
-const LoginScreen = props => {
+const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
@@ -14,29 +14,22 @@ const LoginScreen = props => {
     //         response => console.log(response)
     //     );
     // }
-    const [loggedIn, setLoggedin] = useState(false);
+
     const auth = firebase.auth();
 
     const signUp = async (email, password) => {
         await auth.createUserWithEmailAndPassword(email, password).then(
-            response => {
-                setLoggedin(true);
-                console.log("am ajuns aici");
-                console.log(response.user.getIdToken());
-                history.push("/mainScreen")
+            () => {
+                history.push('/mainScreen');
             }
         )
     }
     const logIn = async (email, password) => {
         await auth.signInWithEmailAndPassword(email, password).then(
-            response => {
-                setLoggedin(true);
-                console.log("am ajuns aici");
-                console.log(response.user.getIdToken());
-                history.push("/mainScreen")
+            () => {
+                history.push('/mainScreen');
             }
         )
-
     }
     return (
         <div className="App">
@@ -68,4 +61,4 @@ const LoginScreen = props => {
     )
 }
 
-export default LoginScreen;
+export default withRouter(LoginScreen);

@@ -5,10 +5,12 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
+import LoginScreen from "./screens/LoginScreen";
 
 function App() {
     return (
         <div>
+            <LoginScreen/>
         </div>
     )
 }
