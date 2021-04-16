@@ -1,48 +1,16 @@
 import './App.css';
-import React, {useState} from 'react';
+import React from 'react';
 import firebase from "firebase/app";
 import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
-import LoginScreen from "./screens/LoginScreen";
-import {Link, BrowserRouter as Router} from "react-router-dom"
-
 
 function App() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    // const pushSomethingToFirebase = () => {
-    //     const firebaseRef = firebase.database().ref();
-    //     firebaseRef.child("User").set(email + " si parola " + password).then(
-    //         response => console.log(response)
-    //     );
-    // }
-
     return (
-        <div className="App">
-            <form>
-                <label>
-                    Email:
-                    <input
-                        onChange={event => setEmail(event.target.value)}
-                        type="text" name="name"/>
-                </label>
-            </form>
-            <form>
-                <label>
-                    Password:
-                    <input
-                        onChange={event => setPassword(event.target.value)}
-                        type="password" name="name"/>
-                </label>
-                <LoginScreen email={email}
-                             password={password}
-                />
-            </form>
+        <div>
         </div>
-    );
+    )
 }
 
 // TODO: Replace the following with your app's Firebase project configuration

@@ -2,32 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {BrowserRouter as Router,  Route, Switch} from "react-router-dom";
-import FirstScreen from "./screens/FirstScreen";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import LoginScreen from "./screens/LoginScreen";
 import MainScreen from "./screens/MainScreen";
 
 const Routing = () => {
     return (
         <div>
-            <Switch>
-                <Router>
+            <Router>
+                <Switch>
                     <div>
-                        <Route path="/" component={FirstScreen}/>
-                        <Route path="/loginScreen" component={LoginScreen}/>
-                        <Route path="/mainScreen" component={MainScreen}/>
+                        <Route exact path=""  component={LoginScreen}/>
+                        <Route  exact path="/mainScreen"  component={MainScreen}/>
                     </div>
-                </Router>
-
-            </Switch>
-        </div>
-    );
+                </Switch>
+            </Router>
+        </div>)
 }
 
 ReactDOM.render(
-    <React.StrictMode>
+    <Routing>
         <App/>
-    </React.StrictMode>,
+    </Routing>,
     document.getElementById('root')
 );
 
