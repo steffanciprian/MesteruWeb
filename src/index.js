@@ -4,8 +4,9 @@ import './index.css';
 import {BrowserRouter as Router, BrowserRouter, Route, Switch} from "react-router-dom";
 import LoginScreen from "./screens/LoginScreen";
 import MainScreen from "./screens/MainScreen";
+import App from "./App";
 
-const Routing = () => {
+const AppInitialising = () => {
 }
 
 ReactDOM.render(
