@@ -24,7 +24,14 @@ const MainScreen = () => {
                 color={itemData.color}
                 title={itemData.title}
                 uri={itemData.uri}
-                onPress={() => history.push('/serviceDetailScreen')}
+                onPress={() => history.push({
+                    pathname: '/serviceDetailScreen',
+                    state: {
+                        serviciuId : itemData.id,
+                        serviciuTitle:itemData.title,
+                        serviciuUri: itemData.uri,
+                    }
+                })}
             />
         )
     }

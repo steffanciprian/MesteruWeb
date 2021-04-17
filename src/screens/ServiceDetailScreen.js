@@ -1,16 +1,15 @@
 import React from 'react';
 
 const ServiceDetailScreen = props => {
-    const serviciuId = props.getParam('serviciuId');
-    const serviciuTitle = props.navigation.getParam('serviciuTitle');
-    const serviciuUri = props.navigation.getParam('serviciuUri');
+    const serviciuTitle = props.location.state.serviciuTitle;
+    const serviciuUri = props.location.state.serviciuUri;
     return (
-        <div >
+        <div>
 
             <div>
                 <label>{serviciuTitle}</label>
                 <img className="img"
-                     src={props.uri}
+                     src={serviciuUri}
                      style={{height: 100, width: 100}}
                      alt=""/>
             </div>
