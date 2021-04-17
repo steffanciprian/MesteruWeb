@@ -7,9 +7,10 @@ const ServiceCard = props => {
         >
             <div>
                 <div>
-                    <img
-                        source={{uri: props.uri}}
-                    />
+                    <img className="img"
+                         src={props.uri}
+                         style={{height: 100, width: 100}}
+                         alt=""/>
                 </div>
                 <label>{props.title} </label>
             </div>

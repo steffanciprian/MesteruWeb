@@ -6,15 +6,14 @@ import {useHistory} from "react-router";
 
 const MainScreen = () => {
     const [data, setData] = useState(Servicii);
-    const [filteredData, setFilteredData] = useState();
+    const [filteredData, setFilteredData] = useState('');
     const [value, setValue] = useState();
     const history = useHistory()
 
     const search = searchText => {
         let filteredData = data.filter(item => {
-            if (item.title.toLowerCase().includes(searchText) || item.title.toLowerCase() === searchText) {
-                return item;
-            }
+            return item.title.toLowerCase().includes(searchText) || item.title.toLowerCase() === searchText
+
         });
         setFilteredData(filteredData);
         setValue(searchText);
@@ -22,13 +21,10 @@ const MainScreen = () => {
     const renderEachItem = itemData => {
         return (
             <ServiceCard
-                // color={itemData.item.color}
-                // title={itemData.item.title}
+                color={itemData.color}
                 title={itemData.title}
-                // uri={itemData.item.uri}
-                onPress={() => {
-                    history.push('/serviceDetailScreen')
-                }}
+                uri={itemData.uri}
+                onPress={() => history.push('/serviceDetailScreen')}
             />
         )
     }
@@ -39,7 +35,7 @@ const MainScreen = () => {
                     placeholder="Search..."
                     autoCapitalize="none"
                     autoCorrect={false}
-                    // onChange={text => search(text)}
+                    onChange={e => search(e.target.value)}
                     value={value}
                 />
             </div>
