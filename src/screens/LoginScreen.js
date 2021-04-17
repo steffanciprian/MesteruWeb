@@ -1,12 +1,15 @@
 import React, {useState} from "react";
 import {Button} from "react-bootstrap";
-import firebase from "firebase";
 import {useHistory, withRouter} from "react-router-dom";
+import * as authActions from '../store/actions/authentication';
+import {useDispatch} from 'react-redux';
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
+    const dispatch = useDispatch();
+    const [error, setError] = useState();
 
     // const pushSomethingToFirebase = () => {
     //     const firebaseRef = firebase.database().ref();
@@ -15,21 +18,24 @@ const LoginScreen = () => {
     //     );
     // }
 
-    const auth = firebase.auth();
+    const signUp = async () => {
+        setError(null);
+        try {
+            await dispatch(authActions.signUp(email, password));
+            history.push("/mainScreen");
+        } catch (error) {
+            setError(error.message);
+        }
 
-    const signUp = async (email, password) => {
-        await auth.createUserWithEmailAndPassword(email, password).then(
-            () => {
-                history.push('/mainScreen');
-            }
-        )
     }
     const logIn = async (email, password) => {
-        await auth.signInWithEmailAndPassword(email, password).then(
-            () => {
-                history.push('/mainScreen');
-            }
-        )
+        setError(null);
+        try {
+            await dispatch(authActions.logIn(email, password));
+            history.push("/mainScreen");
+        } catch (error) {
+            setError(error.message);
+        }
     }
     return (
         <div className="App">
